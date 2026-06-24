@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>José Manuel Luque | Portfolio</title>
+		<meta name="description" content="Portfolio profesional de José Manuel Luque: CV, proyectos y contacto." />
+		<style>
+			:root {
+				--bg: #0f172a;
+				--bg-soft: #0b1220;
+				--card: #0f172a;
+				--text: #e6eef6;
+				--muted: #98a6b3;
+				--accent: #38bdf8;
+				--glass: rgba(255,255,255,0.03);
+			}
+
+			* { box-sizing: border-box; }
+			html,body { height:100%; }
+			body {
+				margin: 0;
+				font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				background: linear-gradient(180deg,var(--bg),#020617);
+				color: var(--text);
+				-webkit-font-smoothing:antialiased;
+			}
+
+			.container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 2rem 1.25rem 4rem;
+			}
+
+			header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.25rem }
+			.brand { display:flex; gap:1rem; align-items:center }
+			.avatar { width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#7dd3fc); display:flex; align-items:center; justify-content:center; color:#031029; font-weight:700 }
+			h1 { font-size:clamp(1.6rem,4vw,2.4rem); margin:0 }
+			.lead { color:var(--muted); margin:0.25rem 0 0 }
+
+			.grid { display:grid; grid-template-columns: 1fr 360px; gap:1rem; align-items:start }
+			@media (max-width:900px){ .grid{ grid-template-columns: 1fr; } }
+
+			.card { background:var(--glass); border:1px solid rgba(255,255,255,0.03); padding:1rem; border-radius:12px }
+			.actions { display:flex; gap:.6rem; flex-wrap:wrap }
+			.btn { display:inline-block; padding:.55rem .9rem; border-radius:10px; text-decoration:none; color:#041022; background:var(--accent); font-weight:600 }
+			.btn.ghost { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.04) }
+
+			h2 { margin:0 0 .5rem 0 }
+			p { margin:.4rem 0 }
+
+			.pdf-viewer { width:100%; height:60vh; border-radius:10px; overflow:hidden; background:#fff }
+			.meta { display:flex; gap: .6rem; flex-wrap:wrap; color:var(--muted); font-size:.95rem }
+
+			.list { display:grid; gap:.6rem }
+			.project { padding:.6rem; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02) }
+
+			footer { margin-top:1.25rem; color:var(--muted); font-size:.9rem; text-align:center }
+
+			.contact a { color:var(--accent); text-decoration:none }
+		</style>
+	</head>
+	<body>
+		<main class="container">
+			<header>
+				<div class="brand">
+					<div class="avatar">JM</div>
+					<div>
+						<h1>José Manuel Luque</h1>
+						<p class="lead">Desarrollador web — Portafolio profesional y CV descargable</p>
+					</div>
+				</div>
+				<div class="actions">
+					<a id="cv-open-link" class="btn" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
+					<a id="cv-download-link" class="btn ghost" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>Descargar CV</a>
+				</div>
+			</header>
+
+			<div class="grid">
+				<section>
+					<div class="card">
+						<h2>Sobre mí</h2>
+						<p>Hola, soy José Manuel. Creo interfaces accesibles y páginas web optimizadas para producción. Actualmente estoy terminando un curso que finaliza mañana y actualizo este portfolio para postular a ofertas laborales.</p>
+						<div class="meta">
+							<div>Localización: España</div>
+							<div>Disponibilidad: Inmediata</div>
+						</div>
+					</div>
+
+					<div class="card" style="margin-top:1rem">
+						<h2>Proyectos</h2>
+						<div class="list">
+							<article class="project">
+								<strong>Portfolio personal</strong>
+								<p class="muted">Sitio estático con despliegue en GitHub Pages. Muestra CV PDF, proyectos y contacto.</p>
+							</article>
+							<article class="project">
+								<strong>Proyecto X</strong>
+								<p class="muted">Descripción breve del proyecto, tecnologías usadas y enlace (añade enlace cuando esté disponible).</p>
+							</article>
+						</div>
+					</div>
+
+					<div class="card" style="margin-top:1rem">
+						<h2>Curso en curso</h2>
+						<p>Nombre del curso: <strong>Frontend Avanzado</strong>. Estado: <strong>En curso — finaliza mañana</strong>. Contenidos: HTML semántico, accesibilidad, rendimiento y despliegue.</p>
+					</div>
+
+					<div class="card" style="margin-top:1rem">
+						<h2>Información para candidaturas</h2>
+						<p>- CV en PDF listo para adjuntar.
+						- Portafolio con proyectos representativos.
+						- Email de contacto y GitHub/LinkedIn en la sección de contacto.</p>
+					</div>
+				</section>
+
+				<aside>
+					<div class="card">
+						<h2>Currículum</h2>
+						<p class="subtitle">Visor integrado (si tu navegador lo permite)</p>
+						<object id="cv-pdf-viewer" class="pdf-viewer" data="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" type="application/pdf" aria-label="Visor de currículum en PDF">
+							<p>Tu navegador no puede mostrar el PDF embebido. <a id="cv-fallback-link" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf">Abrir / descargar CV</a>.</p>
+						</object>
+						<div style="margin-top:.75rem; display:flex; gap:.5rem; justify-content:flex-end">
+							<a class="btn" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>Descargar</a>
+						</div>
+					</div>
+
+					<div class="card contact" style="margin-top:1rem">
+						<h2>Contacto</h2>
+						<p>Email: <a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></p>
+						<p>GitHub: <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer">github.com/tuusuario</a></p>
+						<p>LinkedIn: <a href="https://www.linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer">linkedin.com/in/tuusuario</a></p>
+					</div>
+				</aside>
+			</div>
+
+			<footer>
+				© <span id="year"></span> José Manuel Luque — Portfolio
+			</footer>
+		</main>
+
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+			// Si el PDF no carga automáticamente, el enlace de fallback ayuda a abrirlo
+			const obj = document.getElementById('cv-pdf-viewer');
+			obj.addEventListener('error', () => {
+				document.getElementById('cv-fallback-link').style.display = 'inline';
+			});
+		</script>
+	</body>
+</html>
