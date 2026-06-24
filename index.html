@@ -34,7 +34,9 @@
 
 			header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.25rem }
 			.brand { display:flex; gap:1rem; align-items:center }
-			.avatar { width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#7dd3fc); display:flex; align-items:center; justify-content:center; color:#031029; font-weight:700 }
+			.avatar { width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#7dd3fc); display:flex; align-items:center; justify-content:center; color:#031029; font-weight:700; overflow:hidden; position:relative }
+			.avatar img { width:100%; height:100%; object-fit:cover; display:block; border-radius:12px }
+			.avatar .initials { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:700 }
 			h1 { font-size:clamp(1.6rem,4vw,2.4rem); margin:0 }
 			.lead { color:var(--muted); margin:0.25rem 0 0 }
 
@@ -63,11 +65,14 @@
 	<body>
 		<main class="container">
 			<header>
-				<div class="brand">
-					<div class="avatar">JM</div>
+				    <div class="brand">
+					    <div class="avatar">
+						<img src="Avatar.png" alt="Avatar José Manuel" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+						<span class="initials">JM</span>
+					    </div>
 					<div>
 						<h1>José Manuel Luque</h1>
-						<p class="lead">Desarrollador web — Portafolio profesional y CV descargable</p>
+						<p class="lead">Desarrollador Multiplataforma — Portafolio y CV descargable</p>
 					</div>
 				</div>
 				<div class="actions">
@@ -80,9 +85,9 @@
 				<section>
 					<div class="card">
 						<h2>Sobre mí</h2>
-						<p>Hola, soy José Manuel. Creo interfaces accesibles y páginas web optimizadas para producción. Actualmente estoy terminando un curso que finaliza mañana y actualizo este portfolio para postular a ofertas laborales.</p>
+						<p>Soy José Manuel Luque, desarrollador de aplicaciones multiplataforma con experiencia en Android y desarrollo full‑stack. Me centro en crear soluciones sólidas, funcionales y accesibles: APIs, backend y aplicaciones móviles. Formación técnica en desarrollo de apps multiplataforma y experiencia con bases de datos, APIs y diseño de interfaces.</p>
 						<div class="meta">
-							<div>Localización: España</div>
+							<div>Localización: San Fernando, Cádiz, España</div>
 							<div>Disponibilidad: Inmediata</div>
 						</div>
 					</div>
@@ -91,12 +96,16 @@
 						<h2>Proyectos</h2>
 						<div class="list">
 							<article class="project">
-								<strong>Portfolio personal</strong>
-								<p class="muted">Sitio estático con despliegue en GitHub Pages. Muestra CV PDF, proyectos y contacto.</p>
+								<strong>Home Mate</strong>
+								<p class="muted">Aplicación + API para gestionar tareas y automatizaciones domésticas. Tecnologías: Flutter, Dart, APIs REST.</p>
 							</article>
 							<article class="project">
-								<strong>Proyecto X</strong>
-								<p class="muted">Descripción breve del proyecto, tecnologías usadas y enlace (añade enlace cuando esté disponible).</p>
+								<strong>BillGuard</strong>
+								<p class="muted">App para gestionar suscripciones y pagos recurrentes; incluye panel de administración y notificaciones.</p>
+							</article>
+							<article class="project">
+								<strong>AlphaBot2</strong>
+								<p class="muted">Proyecto de robótica con integración Python/ROS y control de hardware (AlphaBot2).</p>
 							</article>
 						</div>
 					</div>
@@ -128,9 +137,11 @@
 
 					<div class="card contact" style="margin-top:1rem">
 						<h2>Contacto</h2>
-						<p>Email: <a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></p>
-						<p>GitHub: <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer">github.com/tuusuario</a></p>
-						<p>LinkedIn: <a href="https://www.linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer">linkedin.com/in/tuusuario</a></p>
+						<p>Email: <a href="mailto:josemanuelluquegonzalez@gmail.com">josemanuelluquegonzalez@gmail.com</a></p>
+						<p>Teléfono: <a href="tel:+34722837069">+34 722 837 069</a></p>
+						<p>Dirección: C/ Nautilus, Blq 3, Pt 5, Bajo A, San Fernando, Cádiz</p>
+						<p>GitHub: <a href="https://github.com/JoseManuelLuque/">github.com</a></p>
+						<p>LinkedIn: <a href="https://www.linkedin.com/in/jos%C3%A9-manuel-luque-gonz%C3%A1lez-633ab4252/">linkedin.com</a></p>
 					</div>
 				</aside>
 			</div>
