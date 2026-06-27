@@ -1,163 +1,1151 @@
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>José Manuel Luque | Portfolio</title>
-		<meta name="description" content="Portfolio profesional de José Manuel Luque: CV, proyectos y contacto." />
-		<style>
-			:root {
-				--bg: #0f172a;
-				--bg-soft: #0b1220;
-				--card: #0f172a;
-				--text: #e6eef6;
-				--muted: #98a6b3;
-				--accent: #38bdf8;
-				--glass: rgba(255,255,255,0.03);
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>José Manuel Luque | Desarrollador Multiplataforma</title>
+	<meta name="description" content="Portfolio de José Manuel Luque — Desarrollador de aplicaciones multiplataforma. Android, Kotlin, APIs REST y proyectos reales en GitHub." />
+	<meta name="theme-color" content="#070b14" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--bg: #070b14;
+			--bg-elevated: #0d1424;
+			--bg-card: rgba(13, 20, 36, 0.72);
+			--border: rgba(148, 163, 184, 0.12);
+			--border-hover: rgba(56, 189, 248, 0.35);
+			--text: #f1f5f9;
+			--text-muted: #94a3b8;
+			--accent: #38bdf8;
+			--accent-soft: rgba(56, 189, 248, 0.12);
+			--accent-glow: rgba(56, 189, 248, 0.25);
+			--purple: #a78bfa;
+			--green: #34d399;
+			--radius: 16px;
+			--radius-sm: 10px;
+			--shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+			--transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		*, *::before, *::after { box-sizing: border-box; }
+
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 5rem;
+		}
+
+		body {
+			margin: 0;
+			font-family: Inter, "Segoe UI", system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			background:
+				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.15), transparent),
+				radial-gradient(ellipse 60% 40% at 100% 0%, rgba(167, 139, 250, 0.08), transparent),
+				radial-gradient(ellipse 50% 30% at 0% 100%, rgba(56, 189, 248, 0.06), transparent);
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		a { color: inherit; }
+
+		.container {
+			position: relative;
+			z-index: 1;
+			max-width: 1140px;
+			margin: 0 auto;
+			padding: 0 1.25rem 4rem;
+		}
+
+		/* ── Nav ── */
+		.nav {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			backdrop-filter: blur(16px) saturate(1.4);
+			background: rgba(7, 11, 20, 0.82);
+			border-bottom: 1px solid var(--border);
+		}
+
+		.nav-inner {
+			max-width: 1140px;
+			margin: 0 auto;
+			padding: 0.85rem 1.25rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.nav-brand {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 0.95rem;
+		}
+
+		.nav-avatar {
+			width: 36px;
+			height: 36px;
+			border-radius: 10px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			background: linear-gradient(135deg, var(--accent), var(--purple));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.75rem;
+			font-weight: 700;
+			color: #041022;
+			position: relative;
+		}
+
+		.nav-avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: var(--text-muted);
+			font-size: 0.875rem;
+			font-weight: 500;
+			padding: 0.45rem 0.85rem;
+			border-radius: 8px;
+			transition: color var(--transition), background var(--transition);
+		}
+
+		.nav-links a:hover {
+			color: var(--text);
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		.nav-toggle {
+			display: none;
+			background: none;
+			border: 1px solid var(--border);
+			border-radius: 8px;
+			color: var(--text);
+			padding: 0.4rem 0.6rem;
+			cursor: pointer;
+		}
+
+		/* ── Hero ── */
+		.hero {
+			padding: 4rem 0 3rem;
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 2.5rem;
+			align-items: center;
+		}
+
+		.hero-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.35rem 0.85rem;
+			border-radius: 999px;
+			background: var(--accent-soft);
+			border: 1px solid rgba(56, 189, 248, 0.2);
+			color: var(--accent);
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin-bottom: 1.25rem;
+		}
+
+		.hero-badge .dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: var(--green);
+			animation: pulse 2s ease-in-out infinite;
+		}
+
+		@keyframes pulse {
+			0%, 100% { opacity: 1; transform: scale(1); }
+			50% { opacity: 0.6; transform: scale(0.85); }
+		}
+
+		.hero h1 {
+			font-size: clamp(2.2rem, 5vw, 3.4rem);
+			font-weight: 700;
+			line-height: 1.12;
+			margin: 0 0 1rem;
+			letter-spacing: -0.03em;
+		}
+
+		.hero h1 .gradient {
+			background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.hero-lead {
+			font-size: clamp(1rem, 2vw, 1.15rem);
+			color: var(--text-muted);
+			max-width: 540px;
+			margin: 0 0 1.75rem;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			margin-bottom: 2rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.7rem 1.25rem;
+			border-radius: var(--radius-sm);
+			font-size: 0.9rem;
+			font-weight: 600;
+			text-decoration: none;
+			border: none;
+			cursor: pointer;
+			transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+		}
+
+		.btn:active { transform: scale(0.97); }
+
+		.btn-primary {
+			background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+			color: #041022;
+			box-shadow: 0 4px 20px var(--accent-glow);
+		}
+
+		.btn-primary:hover {
+			box-shadow: 0 6px 28px rgba(56, 189, 248, 0.4);
+			transform: translateY(-1px);
+		}
+
+		.btn-ghost {
+			background: transparent;
+			color: var(--text);
+			border: 1px solid var(--border);
+		}
+
+		.btn-ghost:hover {
+			border-color: var(--border-hover);
+			background: rgba(255, 255, 255, 0.04);
+		}
+
+		.social-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.65rem;
+		}
+
+		.social-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.6rem;
+			padding: 0.6rem 1rem;
+			border-radius: var(--radius-sm);
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			text-decoration: none;
+			color: var(--text);
+			font-size: 0.875rem;
+			font-weight: 500;
+			transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+		}
+
+		.social-link:hover {
+			border-color: var(--border-hover);
+			background: rgba(56, 189, 248, 0.06);
+			transform: translateY(-2px);
+			box-shadow: var(--shadow);
+		}
+
+		.social-link .icon {
+			width: 20px;
+			height: 20px;
+			flex-shrink: 0;
+		}
+
+		.social-link.github:hover { border-color: rgba(255, 255, 255, 0.25); }
+		.social-link.linkedin:hover { border-color: rgba(10, 102, 194, 0.5); background: rgba(10, 102, 194, 0.08); }
+		.social-link.email:hover { border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.06); }
+
+		.hero-visual {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.hero-avatar-wrap {
+			position: relative;
+		}
+
+		.hero-avatar-wrap::before {
+			content: "";
+			position: absolute;
+			inset: -4px;
+			border-radius: 24px;
+			background: linear-gradient(135deg, var(--accent), var(--purple));
+			opacity: 0.5;
+			filter: blur(20px);
+			z-index: -1;
+		}
+
+		.hero-avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 2px solid rgba(56, 189, 248, 0.3);
+			background: linear-gradient(135deg, var(--accent), var(--purple));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 3rem;
+			font-weight: 700;
+			color: #041022;
+			position: relative;
+		}
+
+		.hero-avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.github-stats {
+			display: flex;
+			gap: 0.75rem;
+		}
+
+		.stat-pill {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0.65rem 1.1rem;
+			border-radius: var(--radius-sm);
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			min-width: 80px;
+		}
+
+		.stat-pill strong {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: var(--accent);
+		}
+
+		.stat-pill span {
+			font-size: 0.72rem;
+			color: var(--text-muted);
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		/* ── Sections ── */
+		.section {
+			margin-bottom: 3.5rem;
+		}
+
+		.section-header {
+			margin-bottom: 1.5rem;
+		}
+
+		.section-label {
+			font-family: "JetBrains Mono", monospace;
+			font-size: 0.75rem;
+			font-weight: 500;
+			color: var(--accent);
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			margin-bottom: 0.4rem;
+		}
+
+		.section-title {
+			font-size: clamp(1.5rem, 3vw, 1.85rem);
+			font-weight: 700;
+			margin: 0;
+			letter-spacing: -0.02em;
+		}
+
+		.card {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.5rem;
+			backdrop-filter: blur(8px);
+		}
+
+		/* ── About ── */
+		.about-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+		}
+
+		.about-text p {
+			color: var(--text-muted);
+			margin: 0 0 1rem;
+		}
+
+		.about-text p:last-child { margin-bottom: 0; }
+
+		.meta-grid {
+			display: grid;
+			gap: 0.75rem;
+		}
+
+		.meta-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 0.75rem;
+			padding: 0.85rem 1rem;
+			border-radius: var(--radius-sm);
+			background: rgba(255, 255, 255, 0.02);
+			border: 1px solid var(--border);
+		}
+
+		.meta-item .meta-icon {
+			width: 18px;
+			height: 18px;
+			color: var(--accent);
+			flex-shrink: 0;
+			margin-top: 2px;
+		}
+
+		.meta-item strong {
+			display: block;
+			font-size: 0.8rem;
+			color: var(--text-muted);
+			font-weight: 500;
+			margin-bottom: 0.15rem;
+		}
+
+		.meta-item span {
+			font-size: 0.9rem;
+		}
+
+		/* ── Skills ── */
+		.skills-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.6rem;
+		}
+
+		.skill-tag {
+			padding: 0.45rem 0.9rem;
+			border-radius: 999px;
+			font-size: 0.82rem;
+			font-weight: 500;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid var(--border);
+			color: var(--text);
+			transition: border-color var(--transition), background var(--transition);
+		}
+
+		.skill-tag:hover {
+			border-color: var(--border-hover);
+			background: var(--accent-soft);
+		}
+
+		/* ── Projects ── */
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 1rem;
+		}
+
+		.project-card {
+			display: flex;
+			flex-direction: column;
+			padding: 1.35rem;
+			border-radius: var(--radius);
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			text-decoration: none;
+			color: inherit;
+			transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.project-card::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--accent), var(--purple));
+			opacity: 0;
+			transition: opacity var(--transition);
+		}
+
+		.project-card:hover {
+			border-color: var(--border-hover);
+			transform: translateY(-3px);
+			box-shadow: var(--shadow);
+		}
+
+		.project-card:hover::before { opacity: 1; }
+
+		.project-header {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 0.75rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.project-name {
+			font-size: 1.05rem;
+			font-weight: 700;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.project-name svg {
+			width: 18px;
+			height: 18px;
+			color: var(--text-muted);
+			flex-shrink: 0;
+		}
+
+		.project-stars {
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+			font-size: 0.8rem;
+			color: var(--text-muted);
+			white-space: nowrap;
+		}
+
+		.project-desc {
+			font-size: 0.875rem;
+			color: var(--text-muted);
+			margin: 0 0 1rem;
+			flex: 1;
+			line-height: 1.55;
+		}
+
+		.project-footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.5rem;
+			margin-top: auto;
+		}
+
+		.lang-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-size: 0.78rem;
+			font-weight: 500;
+			color: var(--text-muted);
+			font-family: "JetBrains Mono", monospace;
+		}
+
+		.lang-dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+		}
+
+		.project-link-label {
+			font-size: 0.78rem;
+			color: var(--accent);
+			font-weight: 600;
+		}
+
+		.projects-loading {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: 2.5rem;
+			color: var(--text-muted);
+		}
+
+		.spinner {
+			width: 28px;
+			height: 28px;
+			border: 2px solid var(--border);
+			border-top-color: var(--accent);
+			border-radius: 50%;
+			animation: spin 0.7s linear infinite;
+			margin: 0 auto 0.75rem;
+		}
+
+		@keyframes spin { to { transform: rotate(360deg); } }
+
+		/* ── Two-column layout ── */
+		.two-col {
+			display: grid;
+			grid-template-columns: 1fr 380px;
+			gap: 1.25rem;
+			align-items: start;
+		}
+
+		/* ── CV ── */
+		.pdf-viewer {
+			width: 100%;
+			height: 55vh;
+			min-height: 360px;
+			border-radius: var(--radius-sm);
+			overflow: hidden;
+			background: #fff;
+			border: 1px solid var(--border);
+		}
+
+		.cv-actions {
+			display: flex;
+			gap: 0.6rem;
+			justify-content: flex-end;
+			margin-top: 0.85rem;
+		}
+
+		/* ── Contact ── */
+		.contact-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.65rem;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 0.85rem;
+			padding: 0.75rem 0.9rem;
+			border-radius: var(--radius-sm);
+			background: rgba(255, 255, 255, 0.02);
+			border: 1px solid var(--border);
+			text-decoration: none;
+			color: var(--text);
+			font-size: 0.875rem;
+			transition: border-color var(--transition), background var(--transition);
+		}
+
+		.contact-item:hover {
+			border-color: var(--border-hover);
+			background: rgba(56, 189, 248, 0.04);
+		}
+
+		.contact-item .icon-wrap {
+			width: 36px;
+			height: 36px;
+			border-radius: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--accent-soft);
+			flex-shrink: 0;
+		}
+
+		.contact-item .icon-wrap svg {
+			width: 18px;
+			height: 18px;
+			color: var(--accent);
+		}
+
+		.contact-item .contact-text strong {
+			display: block;
+			font-size: 0.72rem;
+			color: var(--text-muted);
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		/* ── Learning banner ── */
+		.learning-banner {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1.1rem 1.35rem;
+			border-radius: var(--radius);
+			background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(167, 139, 250, 0.08));
+			border: 1px solid rgba(56, 189, 248, 0.18);
+		}
+
+		.learning-icon {
+			width: 44px;
+			height: 44px;
+			border-radius: 12px;
+			background: var(--accent-soft);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+
+		.learning-icon svg {
+			width: 22px;
+			height: 22px;
+			color: var(--accent);
+		}
+
+		.learning-banner h3 {
+			margin: 0 0 0.2rem;
+			font-size: 0.95rem;
+		}
+
+		.learning-banner p {
+			margin: 0;
+			font-size: 0.85rem;
+			color: var(--text-muted);
+		}
+
+		/* ── Footer ── */
+		footer {
+			text-align: center;
+			padding: 2rem 0 1rem;
+			color: var(--text-muted);
+			font-size: 0.85rem;
+			border-top: 1px solid var(--border);
+		}
+
+		footer a {
+			color: var(--accent);
+			text-decoration: none;
+		}
+
+		footer a:hover { text-decoration: underline; }
+
+		/* ── Language colors ── */
+		.lang-kotlin { background: #a97bff; }
+		.lang-python { background: #3572a5; }
+		.lang-dart { background: #00b4ab; }
+		.lang-java { background: #b07219; }
+		.lang-csharp { background: #178600; }
+		.lang-cpp { background: #f34b7d; }
+		.lang-html { background: #e34c26; }
+		.lang-default { background: var(--text-muted); }
+
+		/* ── Responsive ── */
+		@media (max-width: 900px) {
+			.hero {
+				grid-template-columns: 1fr;
+				text-align: center;
+				padding-top: 2.5rem;
 			}
 
-			* { box-sizing: border-box; }
-			html,body { height:100%; }
-			body {
-				margin: 0;
-				font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-				background: linear-gradient(180deg,var(--bg),#020617);
-				color: var(--text);
-				-webkit-font-smoothing:antialiased;
+			.hero-lead { margin-left: auto; margin-right: auto; }
+			.hero-actions, .social-row { justify-content: center; }
+			.hero-visual { order: -1; }
+			.hero-avatar { width: 140px; height: 140px; }
+
+			.two-col { grid-template-columns: 1fr; }
+			.about-grid { grid-template-columns: 1fr; }
+
+			.nav-links {
+				display: none;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				flex-direction: column;
+				background: rgba(7, 11, 20, 0.97);
+				border-bottom: 1px solid var(--border);
+				padding: 0.75rem 1.25rem 1rem;
 			}
 
-			.container {
-				max-width: 1100px;
-				margin: 0 auto;
-				padding: 2rem 1.25rem 4rem;
-			}
+			.nav-links.open { display: flex; }
+			.nav-toggle { display: block; }
+			.nav-inner { position: relative; }
+		}
 
-			header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.25rem }
-			.brand { display:flex; gap:1rem; align-items:center }
-			.avatar { width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#7dd3fc); display:flex; align-items:center; justify-content:center; color:#031029; font-weight:700; overflow:hidden; position:relative }
-			.avatar img { width:100%; height:100%; object-fit:cover; display:block; border-radius:12px }
-			.avatar .initials { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:700 }
-			h1 { font-size:clamp(1.6rem,4vw,2.4rem); margin:0 }
-			.lead { color:var(--muted); margin:0.25rem 0 0 }
-
-			.grid { display:grid; grid-template-columns: 1fr 360px; gap:1rem; align-items:start }
-			@media (max-width:900px){ .grid{ grid-template-columns: 1fr; } }
-
-			.card { background:var(--glass); border:1px solid rgba(255,255,255,0.03); padding:1rem; border-radius:12px }
-			.actions { display:flex; gap:.6rem; flex-wrap:wrap }
-			.btn { display:inline-block; padding:.55rem .9rem; border-radius:10px; text-decoration:none; color:#041022; background:var(--accent); font-weight:600 }
-			.btn.ghost { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.04) }
-
-			h2 { margin:0 0 .5rem 0 }
-			p { margin:.4rem 0 }
-
-			.pdf-viewer { width:100%; height:60vh; border-radius:10px; overflow:hidden; background:#fff }
-			.meta { display:flex; gap: .6rem; flex-wrap:wrap; color:var(--muted); font-size:.95rem }
-
-			.list { display:grid; gap:.6rem }
-			.project { padding:.6rem; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02) }
-
-			footer { margin-top:1.25rem; color:var(--muted); font-size:.9rem; text-align:center }
-
-			.contact a { color:var(--accent); text-decoration:none }
-		</style>
-	</head>
-	<body>
-		<main class="container">
-			<header>
-				    <div class="brand">
-					    <div class="avatar">
-						<img src="Avatar.png" alt="Avatar José Manuel" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
-						<span class="initials">JM</span>
-					    </div>
-					<div>
-						<h1>José Manuel Luque</h1>
-						<p class="lead">Desarrollador Multiplataforma — Portafolio y CV descargable</p>
-					</div>
+		@media (max-width: 480px) {
+			.projects-grid { grid-template-columns: 1fr; }
+			.github-stats { flex-wrap: wrap; justify-content: center; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav" aria-label="Navegación principal">
+		<div class="nav-inner">
+			<a class="nav-brand" href="#inicio">
+				<div class="nav-avatar">
+					<img src="Avatar.png" alt="" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+					<span>JM</span>
 				</div>
-				<div class="actions">
-					<a id="cv-open-link" class="btn" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
-					<a id="cv-download-link" class="btn ghost" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>Descargar CV</a>
+				J. M. Luque
+			</a>
+			<button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+			<ul class="nav-links" id="nav-links">
+				<li><a href="#sobre-mi">Sobre mí</a></li>
+				<li><a href="#proyectos">Proyectos</a></li>
+				<li><a href="#cv">CV</a></li>
+				<li><a href="#contacto">Contacto</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main class="container">
+		<!-- Hero -->
+		<section class="hero" id="inicio">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span class="dot"></span>
+					Disponible para nuevas oportunidades
 				</div>
-			</header>
-
-			<div class="grid">
-				<section>
-					<div class="card">
-						<h2>Sobre mí</h2>
-						<p>Soy José Manuel Luque, desarrollador de aplicaciones multiplataforma con experiencia en Android y desarrollo full‑stack. Me centro en crear soluciones sólidas, funcionales y accesibles: APIs, backend y aplicaciones móviles. Formación técnica en desarrollo de apps multiplataforma y experiencia con bases de datos, APIs y diseño de interfaces.</p>
-						<div class="meta">
-							<div>Localización: San Fernando, Cádiz, España</div>
-							<div>Disponibilidad: Inmediata</div>
-						</div>
-					</div>
-
-					<div class="card" style="margin-top:1rem">
-						<h2>Proyectos</h2>
-						<div class="list">
-							<article class="project">
-								<strong>Home Mate</strong>
-								<p class="muted">Aplicación + API para gestionar tareas y automatizaciones domésticas. Tecnologías: Flutter, Dart, APIs REST.</p>
-							</article>
-							<article class="project">
-								<strong>BillGuard</strong>
-								<p class="muted">App para gestionar suscripciones y pagos recurrentes; incluye panel de administración y notificaciones.</p>
-							</article>
-							<article class="project">
-								<strong>AlphaBot2</strong>
-								<p class="muted">Proyecto de robótica con integración Python/ROS y control de hardware (AlphaBot2).</p>
-							</article>
-						</div>
-					</div>
-
-					<div class="card" style="margin-top:1rem">
-						<h2>Curso en curso</h2>
-						<p>Nombre del curso: <strong>Frontend Avanzado</strong>. Estado: <strong>En curso — finaliza mañana</strong>. Contenidos: HTML semántico, accesibilidad, rendimiento y despliegue.</p>
-					</div>
-
-					<div class="card" style="margin-top:1rem">
-						<h2>Información para candidaturas</h2>
-						<p>- CV en PDF listo para adjuntar.
-						- Portafolio con proyectos representativos.
-						- Email de contacto y GitHub/LinkedIn en la sección de contacto.</p>
-					</div>
-				</section>
-
-				<aside>
-					<div class="card">
-						<h2>Currículum</h2>
-						<p class="subtitle">Visor integrado (si tu navegador lo permite)</p>
-						<object id="cv-pdf-viewer" class="pdf-viewer" data="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" type="application/pdf" aria-label="Visor de currículum en PDF">
-							<p>Tu navegador no puede mostrar el PDF embebido. <a id="cv-fallback-link" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf">Abrir / descargar CV</a>.</p>
-						</object>
-						<div style="margin-top:.75rem; display:flex; gap:.5rem; justify-content:flex-end">
-							<a class="btn" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>Descargar</a>
-						</div>
-					</div>
-
-					<div class="card contact" style="margin-top:1rem">
-						<h2>Contacto</h2>
-						<p>Email: <a href="mailto:josemanuelluquegonzalez@gmail.com">josemanuelluquegonzalez@gmail.com</a></p>
-						<p>Teléfono: <a href="tel:+34722837069">+34 722 837 069</a></p>
-						<p>Dirección: C/ Nautilus, Blq 3, Pt 5, Bajo A, San Fernando, Cádiz</p>
-						<p>GitHub: <a href="https://github.com/JoseManuelLuque/">github.com</a></p>
-						<p>LinkedIn: <a href="https://www.linkedin.com/in/jos%C3%A9-manuel-luque-gonz%C3%A1lez-633ab4252/">linkedin.com</a></p>
-					</div>
-				</aside>
+				<h1>
+					Hola, soy <span class="gradient">José Manuel Luque</span>
+				</h1>
+				<p class="hero-lead">
+					Desarrollador de aplicaciones multiplataforma especializado en Android, Kotlin y APIs REST.
+					Construyo soluciones sólidas, funcionales y accesibles — desde apps móviles hasta backend y automatización.
+				</p>
+				<div class="hero-actions">
+					<a class="btn btn-primary" href="#proyectos">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+						Ver proyectos
+					</a>
+					<a class="btn btn-ghost" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+						Descargar CV
+					</a>
+				</div>
+				<div class="social-row">
+					<a class="social-link github" href="https://github.com/JoseManuelLuque" target="_blank" rel="noopener noreferrer">
+						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+						GitHub
+					</a>
+					<a class="social-link linkedin" href="https://www.linkedin.com/in/jos%C3%A9-manuel-luque-gonz%C3%A1lez-633ab4252/" target="_blank" rel="noopener noreferrer">
+						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+						LinkedIn
+					</a>
+					<a class="social-link email" href="mailto:josemanuelluquegonzalez@gmail.com">
+						<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+						Email
+					</a>
+				</div>
 			</div>
+			<div class="hero-visual">
+				<div class="hero-avatar-wrap">
+					<div class="hero-avatar">
+						<img src="Avatar.png" alt="José Manuel Luque" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+						<span>JM</span>
+					</div>
+				</div>
+				<div class="github-stats" id="github-stats">
+					<div class="stat-pill"><strong id="stat-repos">—</strong><span>Repos</span></div>
+					<div class="stat-pill"><strong id="stat-followers">—</strong><span>Seguidores</span></div>
+				</div>
+			</div>
+		</section>
 
-			<footer>
-				© <span id="year"></span> José Manuel Luque — Portfolio
-			</footer>
-		</main>
+		<!-- Learning -->
+		<section class="section">
+			<div class="learning-banner">
+				<div class="learning-icon">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+				</div>
+				<div>
+					<h3>Frontend Avanzado — En curso</h3>
+					<p>HTML semántico, accesibilidad, rendimiento web y despliegue en producción.</p>
+				</div>
+			</div>
+		</section>
 
-		<script>
-			document.getElementById('year').textContent = new Date().getFullYear();
-			// Si el PDF no carga automáticamente, el enlace de fallback ayuda a abrirlo
-			const obj = document.getElementById('cv-pdf-viewer');
-			obj.addEventListener('error', () => {
-				document.getElementById('cv-fallback-link').style.display = 'inline';
-			});
-		</script>
-	</body>
+		<!-- About + Skills -->
+		<section class="section" id="sobre-mi">
+			<div class="section-header">
+				<div class="section-label">// sobre_mí</div>
+				<h2 class="section-title">Quién soy y qué hago</h2>
+			</div>
+			<div class="about-grid">
+				<div class="card about-text">
+					<p>Soy desarrollador de aplicaciones multiplataforma con experiencia en <strong>Android</strong> y desarrollo <strong>full-stack</strong>. Me centro en crear soluciones sólidas, funcionales y accesibles: APIs REST, backend, bases de datos y aplicaciones móviles nativas.</p>
+					<p>Formación técnica en desarrollo de apps multiplataforma, con proyectos reales en robótica, gestión doméstica, finanzas personales y comunidades gaming. Apasionado por escribir código limpio y aprender tecnologías nuevas.</p>
+				</div>
+				<div class="meta-grid">
+					<div class="meta-item">
+						<svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+						<div><strong>Ubicación</strong><span>San Fernando, Cádiz, España</span></div>
+					</div>
+					<div class="meta-item">
+						<svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+						<div><strong>Disponibilidad</strong><span>Inmediata</span></div>
+					</div>
+					<div class="meta-item">
+						<svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+						<div><strong>Perfil</strong><span>Desarrollador Multiplataforma · Android · APIs</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="card" style="margin-top:1rem">
+				<div class="section-label" style="margin-bottom:0.85rem">Stack tecnológico</div>
+				<div class="skills-grid">
+					<span class="skill-tag">Kotlin</span>
+					<span class="skill-tag">Android</span>
+					<span class="skill-tag">Jetpack Compose</span>
+					<span class="skill-tag">Java</span>
+					<span class="skill-tag">Python</span>
+					<span class="skill-tag">Dart / Flutter</span>
+					<span class="skill-tag">REST APIs</span>
+					<span class="skill-tag">MongoDB</span>
+					<span class="skill-tag">Firebase</span>
+					<span class="skill-tag">C# / Unity</span>
+					<span class="skill-tag">Git & GitHub</span>
+					<span class="skill-tag">HTML & CSS</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section class="section" id="proyectos">
+			<div class="section-header">
+				<div class="section-label">// proyectos</div>
+				<h2 class="section-title">Repositorios destacados</h2>
+			</div>
+			<div class="projects-grid" id="projects-grid">
+				<div class="projects-loading">
+					<div class="spinner"></div>
+					Cargando proyectos desde GitHub…
+				</div>
+			</div>
+		</section>
+
+		<!-- CV + Contact -->
+		<div class="two-col">
+			<section class="section" id="cv" style="margin-bottom:0">
+				<div class="section-header">
+					<div class="section-label">// currículum</div>
+					<h2 class="section-title">CV en PDF</h2>
+				</div>
+				<div class="card">
+					<object id="cv-pdf-viewer" class="pdf-viewer" data="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" type="application/pdf" aria-label="Visor de currículum en PDF">
+						<p style="padding:2rem;text-align:center;color:#333">Tu navegador no puede mostrar el PDF embebido. <a id="cv-fallback-link" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf">Abrir / descargar CV</a>.</p>
+					</object>
+					<div class="cv-actions">
+						<a class="btn btn-ghost" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" target="_blank" rel="noopener noreferrer">Ver en pestaña</a>
+						<a class="btn btn-primary" href="CV%20Jose%20Manuel%20Luque%20Gonzalez.pdf" download>Descargar PDF</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="contacto" style="margin-bottom:0">
+				<div class="section-header">
+					<div class="section-label">// contacto</div>
+					<h2 class="section-title">Hablemos</h2>
+				</div>
+				<div class="card">
+					<div class="contact-list">
+						<a class="contact-item" href="mailto:josemanuelluquegonzalez@gmail.com">
+							<div class="icon-wrap">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+							</div>
+							<div class="contact-text">
+								<strong>Email</strong>
+								josemanuelluquegonzalez@gmail.com
+							</div>
+						</a>
+						<a class="contact-item" href="tel:+34722837069">
+							<div class="icon-wrap">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+							</div>
+							<div class="contact-text">
+								<strong>Teléfono</strong>
+								+34 722 837 069
+							</div>
+						</a>
+						<a class="contact-item" href="https://github.com/JoseManuelLuque" target="_blank" rel="noopener noreferrer">
+							<div class="icon-wrap">
+								<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+							</div>
+							<div class="contact-text">
+								<strong>GitHub</strong>
+								@JoseManuelLuque
+							</div>
+						</a>
+						<a class="contact-item" href="https://www.linkedin.com/in/jos%C3%A9-manuel-luque-gonz%C3%A1lez-633ab4252/" target="_blank" rel="noopener noreferrer">
+							<div class="icon-wrap">
+								<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+							</div>
+							<div class="contact-text">
+								<strong>LinkedIn</strong>
+								José Manuel Luque González
+							</div>
+						</a>
+					</div>
+					<p style="margin:1rem 0 0;font-size:0.82rem;color:var(--text-muted)">
+						C/ Nautilus, Blq 3, Pt 5, Bajo A — San Fernando, Cádiz
+					</p>
+				</div>
+			</section>
+		</div>
+
+		<footer>
+			© <span id="year"></span> José Manuel Luque —
+			<a href="https://github.com/JoseManuelLuque/JoseManuelLuque.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a>
+		</footer>
+	</main>
+
+	<script>
+		const GITHUB_USER = 'JoseManuelLuque';
+
+		const PROJECT_DESCRIPTIONS = {
+			'AlphaBot2_App': 'TFG — App Android para control remoto del robot AlphaBot2 con integración Python/ROS y comunicación en tiempo real.',
+			'GameSphere': 'TFG — Plataforma social para la comunidad gamer: perfiles, interacción y gestión de contenido.',
+			'HomeMate': 'Aplicación + API para gestionar tareas domésticas, automatizaciones y control del hogar inteligente.',
+			'BillGuard': 'App para gestionar suscripciones y pagos recurrentes con panel de administración y notificaciones.',
+			'GOG-Companion': 'Companion app para la plataforma GOG: seguimiento de juegos, logros y biblioteca personal.',
+			'MongoDB-VideoGames-Library': 'CRUD completo de biblioteca de videojuegos con MongoDB y arquitectura Android.',
+			'APIRest_Biblioteca': 'API REST para gestión de biblioteca: endpoints CRUD, autenticación y persistencia.',
+			'Api-Movil-PSP': 'API móvil en Unity/C# — app de selección de películas con gestos swipe tipo Tinder.',
+			'AlphaBot2-App-Scripts': 'Scripts Python de soporte para el ecosistema AlphaBot2: sensores, motores y ROS.',
+			'Steam_Achievements_App': 'App Android integrada con la API de Steam para consultar logros y estadísticas.',
+			'Firebase_WhatsApp': 'Clon funcional de mensajería con Firebase Realtime Database y autenticación.',
+			'Calculadora': 'Calculadora Android funcional con interfaz Material Design.',
+			'JetpackCompose': 'Exploración de UI declarativa con Jetpack Compose en Android.',
+		};
+
+		const EXCLUDE_PATTERNS = [
+			/^PMDM/i, /^ADAT/i, /^HLC/i, /^DIN/i, /^Examen/i, /^2dam/i,
+			/^dint-/i, /^colecciones/i, /^uso_de_clases/i, /^proyecto_inicial/i,
+			/^flutter_/i, /^Github_Edes/i, /^Cine_Edes/i, /^LayoutsXML/i,
+			/^Eventos-Boton/i, /^Gestion-Productos/i, /^Calificaciones/i,
+			/^EjercicioFicheros/i, /^GestionDatosEmpleados/i, /^Corrutinas/i,
+			/^PrimeraActividad/i, /^Recuperacion/i, /^MuseumMania/i,
+			/^PSP_Editor/i, /^Unity-PSP/i, /^Calculadora-Qt/i,
+			/^Billguard-Informes/i, /^Entorno_Yahboom/i, /^DOGZILLA/i,
+			/^JoseManuelLuque\.github\.io$/i, /^JoseManuelLuque$/,
+		];
+
+		const LANG_COLORS = {
+			Kotlin: 'lang-kotlin', Python: 'lang-python', Dart: 'lang-dart',
+			Java: 'lang-java', 'C#': 'lang-csharp', 'C++': 'lang-cpp',
+			HTML: 'lang-html',
+		};
+
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		// Mobile nav
+		const navToggle = document.getElementById('nav-toggle');
+		const navLinks = document.getElementById('nav-links');
+		navToggle.addEventListener('click', () => {
+			const open = navLinks.classList.toggle('open');
+			navToggle.setAttribute('aria-expanded', open);
+		});
+		navLinks.querySelectorAll('a').forEach(a => {
+			a.addEventListener('click', () => navLinks.classList.remove('open'));
+		});
+
+		function langClass(lang) {
+			return LANG_COLORS[lang] || 'lang-default';
+		}
+
+		function getDescription(repo) {
+			if (repo.description) return repo.description.replace(/\u00c3\u00b1/g, 'ñ').replace(/\u00c3\u00a1/g, 'á').replace(/\u00c3\u00a9/g, 'é').replace(/\u00c3\u00ad/g, 'í').replace(/\u00c3\u00b3/g, 'ó').replace(/\u00c3\u00ba/g, 'ú');
+			return PROJECT_DESCRIPTIONS[repo.name] || 'Proyecto disponible en GitHub — explora el código fuente.';
+		}
+
+		function shouldExclude(name) {
+			return EXCLUDE_PATTERNS.some(p => p.test(name));
+		}
+
+		function renderProject(repo) {
+			const lang = repo.language || '';
+			const stars = repo.stargazers_count || 0;
+			const url = repo.homepage || repo.html_url;
+			const card = document.createElement('a');
+			card.className = 'project-card';
+			card.href = url;
+			card.target = '_blank';
+			card.rel = 'noopener noreferrer';
+			card.innerHTML = `
+				<div class="project-header">
+					<h3 class="project-name">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+						${repo.name}
+					</h3>
+					${stars > 0 ? `<span class="project-stars">★ ${stars}</span>` : ''}
+				</div>
+				<p class="project-desc">${getDescription(repo)}</p>
+				<div class="project-footer">
+					${lang ? `<span class="lang-badge"><span class="lang-dot ${langClass(lang)}"></span>${lang}</span>` : '<span></span>'}
+					<span class="project-link-label">${repo.homepage ? 'Ver demo →' : 'Ver en GitHub →'}</span>
+				</div>
+			`;
+			return card;
+		}
+
+		async function loadGitHubData() {
+			const grid = document.getElementById('projects-grid');
+
+			try {
+				const [userRes, reposRes] = await Promise.all([
+					fetch(`https://api.github.com/users/${GITHUB_USER}`),
+					fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
+				]);
+
+				if (userRes.ok) {
+					const user = await userRes.json();
+					document.getElementById('stat-repos').textContent = user.public_repos;
+					document.getElementById('stat-followers').textContent = user.followers;
+				}
+
+				if (!reposRes.ok) throw new Error('Repos fetch failed');
+
+				const repos = await reposRes.json();
+				const featured = repos
+					.filter(r => !r.fork && !shouldExclude(r.name))
+					.sort((a, b) => {
+						const prio = name => PROJECT_DESCRIPTIONS[name] ? 1 : 0;
+						return (prio(b.name) - prio(a.name)) || (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at));
+					})
+					.slice(0, 9);
+
+				grid.innerHTML = '';
+				featured.forEach(repo => grid.appendChild(renderProject(repo)));
+			} catch {
+				grid.innerHTML = '';
+				const fallback = [
+					{ name: 'AlphaBot2_App', description: PROJECT_DESCRIPTIONS['AlphaBot2_App'], html_url: 'https://github.com/JoseManuelLuque/AlphaBot2_App', homepage: 'https://josemanuelluque.github.io/AlphaBot2_App/', language: 'Kotlin', stargazers_count: 1 },
+					{ name: 'GameSphere', description: PROJECT_DESCRIPTIONS['GameSphere'], html_url: 'https://github.com/JoseManuelLuque/GameSphere', language: 'Kotlin', stargazers_count: 0 },
+					{ name: 'HomeMate', description: PROJECT_DESCRIPTIONS['HomeMate'], html_url: 'https://github.com/JoseManuelLuque/HomeMate', language: 'Kotlin', stargazers_count: 1 },
+					{ name: 'BillGuard', description: PROJECT_DESCRIPTIONS['BillGuard'], html_url: 'https://github.com/JoseManuelLuque/BillGuard', language: 'Python', stargazers_count: 1 },
+					{ name: 'GOG-Companion', description: PROJECT_DESCRIPTIONS['GOG-Companion'], html_url: 'https://github.com/JoseManuelLuque/GOG-Companion', language: 'Kotlin', stargazers_count: 0 },
+					{ name: 'APIRest_Biblioteca', description: PROJECT_DESCRIPTIONS['APIRest_Biblioteca'], html_url: 'https://github.com/JoseManuelLuque/APIRest_Biblioteca', language: 'Kotlin', stargazers_count: 1 },
+				];
+				fallback.forEach(repo => grid.appendChild(renderProject(repo)));
+				document.getElementById('stat-repos').textContent = '59';
+				document.getElementById('stat-followers').textContent = '3';
+			}
+		}
+
+		loadGitHubData();
+
+		const cvViewer = document.getElementById('cv-pdf-viewer');
+		cvViewer.addEventListener('error', () => {
+			document.getElementById('cv-fallback-link').style.display = 'inline';
+		});
+	</script>
+</body>
 </html>
