@@ -721,6 +721,241 @@
 			color: var(--text-muted);
 		}
 
+		/* ── Experience timeline ── */
+		.timeline {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+			position: relative;
+		}
+
+		.timeline-item {
+			display: grid;
+			grid-template-columns: 24px 1fr;
+			gap: 0 1.25rem;
+			padding-bottom: 1.5rem;
+			position: relative;
+		}
+
+		.timeline-item:last-child { padding-bottom: 0; }
+
+		.timeline-item::before {
+			content: "";
+			position: absolute;
+			left: 11px;
+			top: 28px;
+			bottom: 0;
+			width: 2px;
+			background: linear-gradient(180deg, var(--accent), transparent);
+		}
+
+		.timeline-item:last-child::before { display: none; }
+
+		.timeline-dot {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: var(--accent-soft);
+			border: 2px solid var(--accent);
+			margin-top: 4px;
+			flex-shrink: 0;
+			position: relative;
+			z-index: 1;
+		}
+
+		.experience-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.35rem;
+			transition: border-color var(--transition);
+		}
+
+		.experience-card:hover { border-color: var(--border-hover); }
+
+		.experience-header {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 0.75rem;
+			margin-bottom: 0.65rem;
+		}
+
+		.experience-title {
+			margin: 0;
+			font-size: 1.05rem;
+			font-weight: 700;
+		}
+
+		.experience-org {
+			margin: 0.2rem 0 0;
+			font-size: 0.875rem;
+			color: var(--accent);
+			font-weight: 500;
+		}
+
+		.experience-date {
+			font-size: 0.78rem;
+			font-weight: 600;
+			color: var(--text-muted);
+			font-family: "JetBrains Mono", monospace;
+			padding: 0.3rem 0.65rem;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid var(--border);
+			white-space: nowrap;
+		}
+
+		.experience-desc {
+			margin: 0 0 0.85rem;
+			font-size: 0.875rem;
+			color: var(--text-muted);
+			line-height: 1.6;
+		}
+
+		.experience-desc li { margin-bottom: 0.35rem; }
+
+		.experience-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			font-size: 0.82rem;
+			font-weight: 600;
+			color: var(--accent);
+			text-decoration: none;
+		}
+
+		.experience-link:hover { text-decoration: underline; }
+
+		/* ── Certifications ── */
+		.certs-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1rem;
+		}
+
+		.cert-card {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			padding: 1.35rem;
+			border-radius: var(--radius);
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			transition: border-color var(--transition), transform var(--transition);
+		}
+
+		.cert-card:hover {
+			border-color: var(--border-hover);
+			transform: translateY(-2px);
+		}
+
+		.cert-card.pending {
+			border-style: dashed;
+			border-color: rgba(167, 139, 250, 0.35);
+			background: linear-gradient(135deg, rgba(167, 139, 250, 0.04), rgba(56, 189, 248, 0.04));
+		}
+
+		.cert-top {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 0.75rem;
+		}
+
+		.cert-icon {
+			width: 42px;
+			height: 42px;
+			border-radius: 11px;
+			background: var(--accent-soft);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+
+		.cert-icon svg {
+			width: 22px;
+			height: 22px;
+			color: var(--accent);
+		}
+
+		.cert-card.pending .cert-icon {
+			background: rgba(167, 139, 250, 0.12);
+		}
+
+		.cert-card.pending .cert-icon svg { color: var(--purple); }
+
+		.cert-info h3 {
+			margin: 0 0 0.25rem;
+			font-size: 0.95rem;
+			font-weight: 700;
+		}
+
+		.cert-info p {
+			margin: 0;
+			font-size: 0.82rem;
+			color: var(--text-muted);
+		}
+
+		.status-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			padding: 0.25rem 0.65rem;
+			border-radius: 999px;
+			font-size: 0.72rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+			white-space: nowrap;
+		}
+
+		.status-badge.done {
+			background: rgba(52, 211, 153, 0.12);
+			color: var(--green);
+			border: 1px solid rgba(52, 211, 153, 0.25);
+		}
+
+		.status-badge.pending {
+			background: rgba(167, 139, 250, 0.12);
+			color: var(--purple);
+			border: 1px solid rgba(167, 139, 250, 0.25);
+		}
+
+		.cert-footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.5rem;
+			margin-top: auto;
+			padding-top: 0.5rem;
+			border-top: 1px solid var(--border);
+		}
+
+		.cert-footer span {
+			font-size: 0.78rem;
+			color: var(--text-muted);
+		}
+
+		.cert-footer .btn-cert {
+			font-size: 0.78rem;
+			font-weight: 600;
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: not-allowed;
+			opacity: 0.7;
+		}
+
+		.cert-footer .btn-cert.available {
+			color: var(--accent);
+			cursor: pointer;
+			opacity: 1;
+		}
+
+		.cert-footer .btn-cert.available:hover { text-decoration: underline; }
+
 		/* ── Footer ── */
 		footer {
 			text-align: center;
@@ -799,6 +1034,8 @@
 			<button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 			<ul class="nav-links" id="nav-links">
 				<li><a href="#sobre-mi">Sobre mí</a></li>
+				<li><a href="#experiencia">Experiencia</a></li>
+				<li><a href="#certificaciones">Certificaciones</a></li>
 				<li><a href="#proyectos">Proyectos</a></li>
 				<li><a href="#cv">CV</a></li>
 				<li><a href="#contacto">Contacto</a></li>
@@ -882,7 +1119,7 @@
 			<div class="about-grid">
 				<div class="card about-text">
 					<p>Soy desarrollador de aplicaciones multiplataforma con experiencia en <strong>Android</strong> y desarrollo <strong>full-stack</strong>. Me centro en crear soluciones sólidas, funcionales y accesibles: APIs REST, backend, bases de datos y aplicaciones móviles nativas.</p>
-					<p>Formación técnica en desarrollo de apps multiplataforma, con proyectos reales en robótica, gestión doméstica, finanzas personales y comunidades gaming. Apasionado por escribir código limpio y aprender tecnologías nuevas.</p>
+					<p>Formación técnica en desarrollo de apps multiplataforma, con experiencia en el <strong>Laboratorio de Robótica Aplicada de la UCA</strong> y proyectos reales en robótica, gestión doméstica, finanzas personales y comunidades gaming. Apasionado por escribir código limpio y aprender tecnologías nuevas.</p>
 				</div>
 				<div class="meta-grid">
 					<div class="meta-item">
@@ -911,10 +1148,81 @@
 					<span class="skill-tag">REST APIs</span>
 					<span class="skill-tag">MongoDB</span>
 					<span class="skill-tag">Firebase</span>
+					<span class="skill-tag">C++ / Qt</span>
 					<span class="skill-tag">C# / Unity</span>
 					<span class="skill-tag">Git & GitHub</span>
 					<span class="skill-tag">HTML & CSS</span>
+					<span class="skill-tag">IA / Agentes</span>
 				</div>
+			</div>
+		</section>
+
+		<!-- Experience -->
+		<section class="section" id="experiencia">
+			<div class="section-header">
+				<div class="section-label">// experiencia</div>
+				<h2 class="section-title">Trayectoria profesional</h2>
+			</div>
+			<div class="timeline">
+				<article class="timeline-item">
+					<div class="timeline-dot" aria-hidden="true"></div>
+					<div class="experience-card">
+						<div class="experience-header">
+							<div>
+								<h3 class="experience-title">Prácticas FCT — Desarrollador</h3>
+								<p class="experience-org">Laboratorio de Robótica Aplicada · ESI · Universidad de Cádiz (UCA)</p>
+							</div>
+							<span class="experience-date">Prácticas formativas</span>
+						</div>
+						<ul class="experience-desc">
+							<li>Desarrollo multidisciplinar en entorno de investigación: robótica móvil, integración software-hardware y prototipado.</li>
+							<li>Trabajo con Python, ROS y Android/Kotlin en el ecosistema del robot AlphaBot2.</li>
+							<li>Origen y desarrollo inicial del <strong>TFG</strong>: aplicación de control remoto para AlphaBot2 (<a href="https://github.com/JoseManuelLuque/AlphaBot2_App" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">AlphaBot2_App</a>).</li>
+							<li>Colaboración con el equipo del laboratorio en tareas de automatización, pruebas y documentación técnica.</li>
+						</ul>
+						<div class="skills-grid" style="margin-bottom:0.85rem">
+							<span class="skill-tag">Robótica</span>
+							<span class="skill-tag">Python</span>
+							<span class="skill-tag">ROS</span>
+							<span class="skill-tag">Kotlin / Android</span>
+							<span class="skill-tag">Investigación aplicada</span>
+						</div>
+						<a class="experience-link" href="#proyectos">
+							Ver proyecto relacionado →
+						</a>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<!-- Certifications -->
+		<section class="section" id="certificaciones">
+			<div class="section-header">
+				<div class="section-label">// certificaciones</div>
+				<h2 class="section-title">Formación complementaria</h2>
+			</div>
+			<div class="certs-grid">
+				<!-- TODO: cuando llegue el certificado, sustituir el enlace disabled por href al PDF
+				     y cambiar status-badge de pending a done -->
+				<article class="cert-card pending" id="cert-ia-agentes">
+					<div class="cert-top">
+						<div style="display:flex;gap:0.85rem;align-items:flex-start">
+							<div class="cert-icon">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8.24 9.93A4 4 0 0 1 12 2"/><path d="M12 12v4"/><path d="M8 22h8"/><path d="M9 18h6"/><circle cx="12" cy="17" r="1"/></svg>
+							</div>
+							<div class="cert-info">
+								<h3>Desarrollo con IA — Agentes</h3>
+								<p>Formación especializada en diseño e implementación de agentes de inteligencia artificial.</p>
+							</div>
+						</div>
+						<span class="status-badge pending">Certificado pendiente</span>
+					</div>
+					<div class="cert-footer">
+						<span>Completado · Jun 2026</span>
+						<!-- TODO: href="certificados/desarrollo-ia-agentes.pdf" cuando esté disponible -->
+						<span class="btn-cert" title="Se añadirá al recibir el certificado de asistencia">Ver certificado</span>
+					</div>
+				</article>
 			</div>
 		</section>
 
